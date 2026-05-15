@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordroom</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="앱 내비게이션">
+        <a class="brand" href="#" aria-label="Wordroom 홈">
+          <span class="brand-mark">W</span>
+          <span>
+            <strong>Wordroom</strong>
+            <small>personal vocab desk</small>
+          </span>
+        </a>
+
+        <nav class="rail-nav" aria-label="주요 메뉴">
+          <a class="rail-link active" href="#listView" data-view="list">Deck</a>
+          <a class="rail-link" href="#cardsView" data-view="cards">Review</a>
+          <a class="rail-link" href="#quizView" data-view="quiz">Quiz</a>
+        </nav>
+
+        <div class="rail-card">
+          <span>Progress</span>
+          <strong><span id="learnedCount">0</span>/<span id="totalCount">0</span></strong>
+          <div class="mini-progress" aria-hidden="true"><i id="progressFill"></i></div>
+        </div>
+      </aside>
+
+      <main class="main-stage">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Today's study queue</p>
+            <h1>Build the deck. Recall the word.</h1>
+          </div>
+          <div class="stats" aria-label="학습 통계">
+            <span><strong id="dueCount">0</strong> due</span>
+            <span><strong id="sessionCount">20</strong> daily</span>
+          </div>
+        </header>
+
+        <section class="command-strip" aria-label="단어장 도구">
+          <label class="search-box">
+            <span aria-hidden="true">Search</span>
+            <input id="searchInput" type="search" placeholder="단어, 뜻, 예문, 태그 검색" />
+          </label>
+          <button class="ghost-btn" id="seedBtn" type="button">Load sample deck</button>
+        </section>
+
+        <main class="workspace">
+          <section class="panel word-form" aria-labelledby="addWordTitle">
+            <div class="section-heading">
+              <p class="eyebrow">Capture</p>
+              <h2 id="addWordTitle">새 단어 추가</h2>
+              <p>방금 마주친 단어를 뜻, 예문, 태그와 함께 넣어두세요.</p>
+            </div>
+
+            <form id="wordForm">
+              <label>
+                단어
+                <input id="wordInput" type="text" autocomplete="off" required placeholder="resilient" />
+              </label>
+              <label>
+                뜻
+                <input id="meaningInput" type="text" autocomplete="off" required placeholder="회복력이 있는" />
+              </label>
+              <label>
+                예문
+                <textarea id="exampleInput" rows="4" placeholder="The team stayed resilient after the launch."></textarea>
+              </label>
+              <label>
+                태그
+                <input id="tagInput" type="text" autocomplete="off" placeholder="reading, writing, daily" />
+              </label>
+              <button class="primary-btn" type="submit">Add word</button>
+            </form>
+          </section>
+
+          <section class="study-area">
+            <nav class="tabs" aria-label="학습 모드">
+              <button class="tab active" type="button" data-view="list">Deck</button>
+              <button class="tab" type="button" data-view="cards">Cards</button>
+              <button class="tab" type="button" data-view="quiz">Quiz</button>
+            </nav>
+
+            <section class="panel view active" id="listView" aria-labelledby="wordListTitle">
+              <div class="section-heading inline">
+                <div>
+                  <p class="eyebrow">Library</p>
+                  <h2 id="wordListTitle">단어장</h2>
+                </div>
+                <span class="status-pill"><span id="shownCount">0</span> shown</span>
+              </div>
+
+              <div class="word-list" id="wordList"></div>
+              <p class="empty-state" id="emptyState">아직 단어가 없습니다. 첫 단어를 추가해보세요.</p>
+            </section>
+
+            <section class="panel view" id="cardsView" aria-labelledby="cardTitle">
+              <div class="section-heading inline">
+                <div>
+                  <p class="eyebrow">Review</p>
+                  <h2 id="cardTitle">플래시카드</h2>
+                </div>
+                <span class="status-pill">tap to flip</span>
+              </div>
+
+              <button class="flashcard" id="flashcard" type="button">
+                <span id="cardLabel">word</span>
+                <strong id="cardWord">단어 없음</strong>
+                <small id="cardHint">단어를 추가하면 카드가 시작됩니다.</small>
+              </button>
+
+              <div class="card-actions">
+                <button class="secondary-btn" id="prevCardBtn" type="button">Previous</button>
+                <button class="primary-btn" id="knowBtn" type="button">I know this</button>
+                <button class="secondary-btn" id="nextCardBtn" type="button">Next</button>
+              </div>
+            </section>
+
+            <section class="panel view" id="quizView" aria-labelledby="quizTitle">
+              <div class="section-heading inline">
+                <div>
+                  <p class="eyebrow">Recall</p>
+                  <h2 id="quizTitle">뜻 맞히기</h2>
+                </div>
+                <span class="status-pill" id="quizProgress">0 / 0</span>
+              </div>
+
+              <div class="quiz-card">
+                <strong id="quizWord">단어가 필요합니다</strong>
+                <div class="options" id="quizOptions"></div>
+                <p id="quizResult" class="quiz-result"></p>
+              </div>
+            </section>
+          </section>
+
+          <aside class="insight-panel" aria-label="학습 요약">
+            <section class="panel focus-card">
+              <p class="eyebrow">Now focused</p>
+              <strong id="focusWord">No word yet</strong>
+              <span id="focusMeaning">단어를 추가하면 오늘의 카드가 표시됩니다.</span>
+            </section>
+
+            <section class="panel rhythm-card">
+              <p class="eyebrow">Routine</p>
+              <div>
+                <strong>20 cards</strong>
+                <span>목록에서 고르고 카드로 뒤집은 뒤 퀴즈로 확인하세요.</span>
+              </div>
+            </section>
+          </aside>
+        </main>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
