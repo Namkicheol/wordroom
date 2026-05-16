@@ -1,25 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+KR:wght@500;700;900&display=swap");
 
 :root {
-  --canvas: #07070a;
-  --surface-100: #101116;
-  --surface-200: #171820;
-  --surface-300: #22232b;
-  --paper: #f5efe4;
-  --paper-2: #ebe0cf;
-  --paper-3: #fffaf1;
-  --ink: #101014;
-  --ink-2: #34323a;
-  --text: #eee9df;
-  --muted: #9b968c;
-  --hairline: rgba(255, 255, 255, 0.12);
-  --paper-line: rgba(16, 16, 20, 0.13);
-  --red: #ff4f43;
-  --red-deep: #b62e27;
-  --blue: #6fa8ff;
-  --amber: #f5b84b;
-  --shadow-high: 0 28px 80px rgba(0, 0, 0, 0.46);
-  --shadow-paper: 0 28px 60px rgba(0, 0, 0, 0.22);
+  /* shadcn TweakCN "Starry Night" — dark navy + blue primary + amber kicker */
+  --canvas: #0b0d18;
+  --surface-100: #181a24;
+  --surface-200: #1d1f2d;
+  --surface-300: #23243a;
+  --paper: #e6eaf3;
+  --paper-2: #d6deec;
+  --paper-3: #f1f4fb;
+  --ink: #1a2238;
+  --ink-2: #2c354d;
+  --text: #e6eaf3;
+  --muted: #7a88a1;
+  --hairline: rgba(188, 205, 240, 0.14);
+  --paper-line: rgba(26, 34, 56, 0.13);
+  --primary: #3a5ba0;
+  --primary-deep: #2c4880;
+  --primary-soft: rgba(58, 91, 160, 0.18);
+  --accent: #bccdf0;
+  --amber: #ffe066;
+  --rose: #a04a6c;
+  /* Backwards-compat aliases so existing rules that reference --red/--blue still work */
+  --red: var(--primary);
+  --red-deep: var(--primary-deep);
+  --blue: var(--accent);
+  --shadow-high: 0 28px 80px rgba(0, 0, 0, 0.55);
+  --shadow-paper: 0 28px 60px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -31,7 +38,7 @@ body {
   min-height: 100vh;
   color: var(--text);
   background:
-    linear-gradient(90deg, rgba(255, 79, 67, 0.12), transparent 20rem),
+    linear-gradient(90deg, rgba(58, 91, 160, 0.20), transparent 20rem),
     linear-gradient(180deg, #111116 0%, var(--canvas) 34%, #0b0a0a 100%);
   font-family:
     "Noto Sans KR", "Apple SD Gothic Neo", "Avenir Next", "SF Pro Text",
@@ -133,15 +140,15 @@ h1 {
   padding: 0 11px;
   border: 1px solid var(--hairline);
   border-radius: 8px;
-  background: #14151b;
+  background: #1d1f2d;
   color: rgba(238, 233, 223, 0.62);
   font-weight: 900;
   text-align: left;
 }
 
 .rail-item.active {
-  border-color: rgba(255, 79, 67, 0.62);
-  background: #f2ede3;
+  border-color: rgba(58, 91, 160, 0.72);
+  background: #e6eaf3;
   color: #111;
   box-shadow: inset 4px 0 0 var(--red);
 }
@@ -156,7 +163,7 @@ h1 {
   padding: 11px;
   border: 1px solid var(--hairline);
   border-radius: 8px;
-  background: #14151b;
+  background: #1d1f2d;
   color: var(--muted);
 }
 
@@ -188,10 +195,12 @@ h1 {
 }
 
 .command-center h2 {
-  font-size: clamp(2rem, 3.4vw, 3.95rem);
-  font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.7rem, 2.6vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--text);
 }
 
 .search-box {
@@ -250,7 +259,7 @@ input:focus {
 
 .mission-tile.wide {
   background:
-    linear-gradient(90deg, rgba(255, 79, 67, 0.18), transparent),
+    linear-gradient(90deg, rgba(58, 91, 160, 0.22), transparent),
     var(--surface-100);
 }
 
@@ -295,7 +304,7 @@ input:focus {
 
 .segment.active,
 .alpha.active {
-  border-color: rgba(255, 79, 67, 0.76);
+  border-color: rgba(58, 91, 160, 0.82);
   background: var(--red);
   color: #fff;
 }
@@ -367,7 +376,7 @@ input:focus {
   padding: 9px 11px;
   border: 1px solid var(--hairline);
   border-radius: 8px;
-  background: #14151b;
+  background: #1d1f2d;
   color: var(--text);
   text-align: left;
   transition:
@@ -378,7 +387,7 @@ input:focus {
 
 .word-row:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 79, 67, 0.4);
+  border-color: rgba(58, 91, 160, 0.55);
   background: #1b1c24;
 }
 
@@ -400,14 +409,14 @@ input:focus {
 }
 
 .word-row.active {
-  border-color: rgba(255, 79, 67, 0.76);
+  border-color: rgba(58, 91, 160, 0.82);
   background: var(--paper);
   color: var(--ink);
   box-shadow: inset 4px 0 0 var(--red);
 }
 
 .word-row.active span {
-  color: #746b61;
+  color: #586478;
 }
 
 .focus-panel {
@@ -424,7 +433,7 @@ input:focus {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.94), rgba(237, 224, 205, 0.96)),
+    linear-gradient(180deg, rgba(241, 244, 251, 0.96), rgba(214, 222, 236, 0.96)),
     var(--paper);
   color: var(--ink);
   box-shadow: var(--shadow-paper);
@@ -487,23 +496,23 @@ input:focus {
 .word-stage h3 {
   margin: 0;
   font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(7rem, 13vw, 13.2rem);
+  font-size: clamp(5rem, 9.5vw, 11rem);
   font-weight: 400;
-  line-height: 0.82;
-  letter-spacing: 0;
+  line-height: 0.88;
+  letter-spacing: -0.005em;
   overflow-wrap: anywhere;
 }
 
 .root-hit {
   color: var(--red-deep);
   text-decoration: underline;
-  text-decoration-color: rgba(255, 79, 67, 0.35);
+  text-decoration-color: rgba(58, 91, 160, 0.55);
   text-decoration-thickness: 0.13em;
   text-underline-offset: 0.07em;
 }
 
 .pronunciation {
-  color: #6e675e;
+  color: #586478;
   font-family: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, monospace;
   font-weight: 700;
 }
@@ -511,14 +520,16 @@ input:focus {
 .meaning-chip {
   width: fit-content;
   max-width: 100%;
-  margin: 8px auto 0;
-  padding: 12px 15px;
-  border: 1px solid rgba(255, 79, 67, 0.26);
-  border-radius: 8px;
-  background: rgba(255, 79, 67, 0.08);
-  color: #24130f;
-  font-size: 1.08rem;
-  font-weight: 900;
+  margin: 14px auto 0;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper-3);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: 0 18px 36px rgba(26, 34, 56, 0.32);
 }
 
 .root-strip {
@@ -549,14 +560,14 @@ input:focus {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 79, 67, 0.22), transparent 42%),
+    linear-gradient(90deg, rgba(58, 91, 160, 0.28), transparent 42%),
     #101116;
-  color: #fff6e8;
+  color: #f1f4fb;
   align-content: center;
 }
 
 .image-placeholder span {
-  color: rgba(255, 246, 232, 0.56);
+  color: rgba(241, 244, 251, 0.62);
 }
 
 .image-placeholder strong {
@@ -588,10 +599,10 @@ input:focus {
 }
 
 .primary-btn {
-  border: 1px solid rgba(255, 79, 67, 0.76);
+  border: 1px solid rgba(58, 91, 160, 0.82);
   background: var(--red);
   color: #fff;
-  box-shadow: 0 18px 38px rgba(255, 79, 67, 0.22);
+  box-shadow: 0 18px 38px rgba(58, 91, 160, 0.28);
 }
 
 .secondary-btn {
@@ -607,7 +618,7 @@ input:focus {
   min-height: 592px;
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 79, 67, 0.16), transparent 42%),
+    linear-gradient(90deg, rgba(58, 91, 160, 0.20), transparent 42%),
     var(--surface-100);
   color: var(--text);
   text-align: center;
@@ -649,7 +660,7 @@ input:focus {
 
 .insight-block h3 {
   margin: 0 0 11px;
-  color: #5f5a52;
+  color: #586478;
   font-family: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, monospace;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -686,7 +697,7 @@ input:focus {
 }
 
 .example-line small {
-  color: #777066;
+  color: #586478;
   font-size: 0.94rem;
 }
 
@@ -694,23 +705,23 @@ input:focus {
   padding: 6px 9px;
   border: 1px solid var(--paper-line);
   border-radius: 999px;
-  background: #fffaf1;
+  background: #f1f4fb;
   color: var(--ink);
   font-weight: 850;
 }
 
 .word-chip.antonym {
-  background: #fff0ec;
-  border-color: rgba(255, 79, 67, 0.3);
-  color: #9f2d24;
+  background: rgba(160, 74, 108, 0.10);
+  border-color: rgba(160, 74, 108, 0.32);
+  color: #7a2a44;
 }
 
 .root-row mark {
   margin-right: 6px;
   padding: 2px 6px;
   border-radius: 6px;
-  background: rgba(255, 79, 67, 0.13);
-  color: #a52c24;
+  background: rgba(58, 91, 160, 0.16);
+  color: #7a2a44;
   font-weight: 950;
 }
 
