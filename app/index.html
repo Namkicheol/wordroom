@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voca App</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="study-shell">
+      <aside class="side-rail" aria-label="학습 메뉴">
+        <div>
+          <p class="rail-kicker">voca</p>
+          <h1>Lexicon Desk</h1>
+        </div>
+        <nav class="rail-nav" aria-label="주요 섹션">
+          <button class="rail-item active" type="button">Daily</button>
+          <button class="rail-item" type="button">Library</button>
+          <button class="rail-item" type="button">Images</button>
+          <button class="rail-item" type="button">Exam</button>
+        </nav>
+        <div class="rail-stats" aria-label="데이터 상태">
+          <span><strong id="totalCount">0</strong> cards</span>
+          <span><strong id="indexCount">0</strong> indexed</span>
+        </div>
+      </aside>
+
+      <section class="study-main">
+        <header class="command-center">
+          <div>
+            <p class="eyebrow">Daily wordroom</p>
+            <h2>Read. Hear. Recall.</h2>
+          </div>
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Search word, root, synonym, meaning" />
+          </label>
+        </header>
+
+        <section class="deck-strip" aria-label="학습 설정">
+          <div class="mission-tile">
+            <p>Session</p>
+            <strong id="dailyLabel">Daily 20</strong>
+            <div class="segmented" aria-label="하루 학습량">
+              <button class="segment active" type="button" data-daily-size="20">20</button>
+              <button class="segment" type="button" data-daily-size="30">30</button>
+              <button class="segment" type="button" data-daily-size="50">50</button>
+            </div>
+          </div>
+          <div class="mission-tile wide">
+            <p>Map</p>
+            <strong>Daily first. Alphabet as navigation.</strong>
+            <div class="alphabet-rail" aria-label="알파벳 구조">
+              <button class="alpha active" type="button" data-alpha="all">All</button>
+              <button class="alpha" type="button" data-alpha="a">A</button>
+              <button class="alpha" type="button" data-alpha="b">B</button>
+              <button class="alpha" type="button" data-alpha="c">C</button>
+              <button class="alpha" type="button" data-alpha="d">D</button>
+            </div>
+          </div>
+          <div class="mission-tile">
+            <p>Index</p>
+            <strong id="visibleCount">0 shown</strong>
+            <small>10k+ words become daily decks, maps, and review loops.</small>
+          </div>
+        </section>
+
+        <section class="study-layout">
+          <aside class="queue-panel" aria-labelledby="wordListTitle">
+            <div class="section-title">
+              <div>
+                <h3 id="wordListTitle">Daily queue</h3>
+                <p>rewritten sample cards</p>
+              </div>
+              <button id="randomBtn" class="icon-command" type="button" aria-label="랜덤 카드">↻</button>
+            </div>
+            <div id="wordList" class="word-list"></div>
+          </aside>
+
+          <section class="focus-panel" aria-live="polite">
+            <article id="cardView" class="focus-card"></article>
+            <div class="card-actions">
+              <button id="flashcardBtn" class="secondary-btn" type="button">Reveal meaning</button>
+              <button id="knownBtn" class="primary-btn" type="button">I knew this</button>
+            </div>
+          </section>
+
+          <aside id="sideView" class="insight-panel" aria-label="단어 세부 정보"></aside>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+      if (window.location.hash.includes("figmacapture")) {
+        const captureScript = document.createElement("script");
+        captureScript.src = "https://mcp.figma.com/mcp/html-to-design/capture.js";
+        captureScript.async = true;
+        document.head.append(captureScript);
+      }
+    </script>
+  </body>
+</html>

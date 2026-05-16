@@ -1,0 +1,42 @@
+[
+  {
+    "source_file": "MD-VOCA_1_K1.pdf",
+    "output_file": "sources/extracted-sample/md-voca-1-k1.md",
+    "total_pages": 626,
+    "extracted_pages": 2,
+    "extracted_chars": 433,
+    "empty_pages": [],
+    "empty_page_count": 0
+  },
+  {
+    "source_file": "보카바이블 A권 (4th)OCR.pdf",
+    "output_file": "sources/extracted-sample/voca-bible-a-4th-ocr.md",
+    "total_pages": 500,
+    "extracted_pages": 2,
+    "extracted_chars": 5210,
+    "empty_pages": [
+      1
+    ],
+    "empty_page_count": 1
+  },
+  {
+    "source_file": "보카바이블 B권 (4th)OCR.pdf",
+    "output_file": "sources/extracted-sample/voca-bible-b-4th-ocr.md",
+    "total_pages": 642,
+    "extracted_pages": 2,
+    "extracted_chars": 653,
+    "empty_pages": [
+      2
+    ],
+    "empty_page_count": 1
+  },
+  {
+    "source_file": "워드스마트 통합본 (넥서스)_ocr.pdf",
+    "output_file": "sources/extracted-sample/word-smart-nexus-ocr.md",
+    "total_pages": 755,
+    "extracted_pages": 2,
+    "extracted_chars": 500,
+    "empty_pages": [],
+    "empty_page_count": 0
+  }
+]
