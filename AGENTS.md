@@ -1,16 +1,21 @@
-# voca app — AGENTS.md (Codex)
+# voca app — 작업 지침
 
-Codex 작업의 1차 진입 문서. Claude Code는 `CLAUDE.md`를 사용한다. 두 파일은 도구 framing만 다르고 섹션·순서·규칙은 동일하게 유지한다. 새 규칙은 양쪽 모두 갱신한다.
+이 파일이 canonical 작업 지침이다. `CLAUDE.md`(Claude Code)와 `AGENTS.md`(Codex)는 같은 파일이다(symlink). Claude Code·Codex 공통.
 
-## Codex 환경 운용
+## 환경 운용
 
-- 파일 탐색은 `rg` / `rg --files` 우선.
-- 파일 수정은 `apply_patch` 우선. 임시 shell heredoc으로 파일을 만들지 않는다.
+- 파일 탐색은 `rg` / `rg --files`(Codex) 또는 `Grep` / `Glob`(Claude Code) 우선. 전 범위 탐색이 필요할 때만 Agent + Explore subagent 사용.
+- 파일 수정은 `apply_patch`(Codex) 또는 `Edit` / `Write`(Claude Code). shell heredoc·`cat <<EOF`으로 파일을 만들지 않는다.
+- 이미지 생성은 `image_gen` / `Canva` / `Pencil`(Codex) 또는 `Gemini`(Claude Code) 계열 도구를 상황에 맞게 사용.
+- 브라우저 자동화는 `Playwright` / `Browser` 계열 도구를 사용.
 - Python 스크립트 작성 전 `python3 --version` 확인. 3.9 환경이면 PEP 604(`X | Y`) / PEP 585(`list[X]`) 문법을 피한다.
 - 작업 전 `git status --short --branch`로 사용자 변경을 확인한다. 내가 만들지 않은 변경은 되돌리지 않는다.
 - `git add .` / `git add -A` 금지. 수정한 파일만 명시 stage.
-- commit message에 `Co-Authored-By: Claude...`를 넣지 않는다.
+- 커밋 트레일러(`Co-Authored-By: Claude…`)는 도구 기본 동작을 따르되 강제하지 않는다. Codex 커밋에는 넣지 않는다.
+- 브랜치 prefix는 사용하는 도구 관례를 따른다 (Claude Code `claude/`, Codex `codex/`).
 - merge/push는 사용자가 명시적으로 요청할 때만.
+- superpowers 스킬(brainstorming, TDD, debugging 등)은 Claude Code에서는 작업 성격이 명확히 일치할 때만 호출. Codex에서는 동등 절차를 작업 성격이 맞을 때만 적용. trivial 요청에 강제 적용 X (전역 지침 기준).
+- 전역 지침(`~/.claude/CLAUDE.md` / `~/.codex/AGENTS.md`)을 우선 참조한다.
 
 ## 프로젝트
 
@@ -48,7 +53,7 @@ Word Smart, MD-VOCA, 보카바이블의 장점을 섞어 만드는 로컬-first 
 
 ## 한국어 용어 규칙
 
-전역 `~/.codex/AGENTS.md` 또는 사용자 전역 지침의 "임용 관련 작업: 한국어 용어 규칙"을 따른다. 일반 학습 어휘에 한국어 표현이 자연스러우면 그대로 사용. 임용 브랜치(`FUTURE_WORK.md`) 작업에 들어가면 합격자 노트/강사 교재/기출 원문에 등장한 한국어 표현만 사용.
+전역 지침(`~/.claude/CLAUDE.md` / `~/.codex/AGENTS.md`)의 "임용 관련 작업: 한국어 용어 규칙"을 따른다. 일반 학습 어휘에 한국어 표현이 자연스러우면 그대로 사용. 임용 브랜치(`FUTURE_WORK.md`) 작업에 들어가면 합격자 노트/강사 교재/기출 원문에 등장한 한국어 표현만 사용.
 
 ## 외과적 수정
 
